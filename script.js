@@ -2,7 +2,7 @@
 // https://app.launchdarkly.com/phil-z-redis-testing/production/features
 
 const LD_CLIENT_ID = '';
-const ENVIRONMENT = 'local'; // This defaults to something like 'development'
+const ENVIRONMENT = 'development'; // This defaults to something like 'development'
 updateEnvLabel();
 
 const user = { key: 'someUserKey' };
@@ -18,6 +18,15 @@ const launchdarkly = {
     }
 
     return ld.variation(key, fallback);
+  },
+  on: function(eventName, fn) {
+    if (ENVIRONMENT === 'local' &&
+      eventName.startsWith('change')
+    ) {
+      return;
+    }
+
+    ld.on(eventName, fn);
   }
 }
 
@@ -45,20 +54,14 @@ function setup(client) {
   // Subscribe to changes
   // Need to exclude subscriptions in local environment or else changes to LD in the upstream WILL still change the values here
   client.on('change:flag-a', (value) => {
-    if (ENVIRONMENT !== 'local') {
-      flagA.innerText = value;
-    }
+    flagA.innerText = value;
   })
   
   client.on('change:flag-b', (value) => {
-    if (ENVIRONMENT !== 'local') {
-      flagB.innerText = value;
-    }
+    flagB.innerText = value;
   })
     
   client.on('change:flag-c', (value) => {
-    if (ENVIRONMENT !== 'local') {
-      flagC.innerText = value;
-    }
+    flagC.innerText = value;
   })
 }
