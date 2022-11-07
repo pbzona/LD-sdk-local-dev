@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaunchDarkly Local Development Patterns</title>
+  <link rel="stylesheet" href="https://unpkg.com/boltcss/bolt.css">
+  <style>
+    main {
+      width: 600px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    section {
+      margin: 35px 0;
+    }
+  </style>
+  <script crossorigin="anonymous" src="https://unpkg.com/launchdarkly-js-client-sdk@2.24.2"></script>
+</head>
+<body>
+<main>
+
+  <section>
+    <h1>Configuration</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Environment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="environment">placeholder</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  
+  <section>
+    <h1>Feature Flags</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Flag Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>flag-a</td>
+          <td id="flag-a">placeholder</td>
+        </tr>
+        <tr>
+          <td>flag-b</td>
+          <td id="flag-b">placeholder</td>
+        </tr>
+        <tr>
+          <td>flag-c</td>
+          <td id="flag-c">placeholder</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script src="./script.js"></script>
+<script src="./flags.js"></script>
+
+</body>
+</html>
